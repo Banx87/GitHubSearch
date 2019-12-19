@@ -191,6 +191,10 @@ textarea {
   font-family: monospace;
 }
 
+.CommitList:nth-child(1) {
+  border-top: solid #acacaa 3px;
+}
+
 .CommitList .AuthorName {
   position: relative;
   left: 80px;
@@ -226,7 +230,7 @@ textarea {
 
 .repoList__btn {
   position: relative;
-  top: 0.4rem;
+  top: 0.45rem;
   display: inline-block;
   padding: 0.5em 1.5em;
   margin: 0 0.1em 1.1em 0.5em;
