@@ -51,6 +51,9 @@ class Repository extends React.Component {
                   </div>
                 );
               })}
+              <button className="repoList__btn">
+                <Link to="/">Go Back</Link>
+              </button>
             </div>
           </div>
         )}
