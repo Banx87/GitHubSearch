@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import "./App.css";
 import Form from "./components/form";
 import Repositories from "./components/repositories";
+import ErrorBoundary from "./components/ErrorBoundaries";
 
 class App extends Component {
-  state = {
-    repos: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      repos: []
+    };
+  }
 
   getProfile = async e => {
     if (e.target.elements.profileName.value != null) {
@@ -36,13 +40,20 @@ class App extends Component {
   };
 
   render() {
+    if (this.props === null) {
+      return <div>Loading...</div>;
+    }
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Github Profile Search</h1>
         </header>
         <Form getProfile={this.getProfile} />
-        <Repositories repos={this.state.repos} />
+        <ErrorBoundary>
+          {/* {!(this.props.repos && this.props.repositories) ? ( */}
+          <Repositories repos={this.state.repos} />
+          {/* ) : null} */}
+        </ErrorBoundary>
       </div>
     );
   }
