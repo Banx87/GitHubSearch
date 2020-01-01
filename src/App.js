@@ -44,17 +44,15 @@ class App extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Github Profile Search</h1>
-        </header>
-        <Form getProfile={this.getProfile} />
-        <ErrorBoundary>
-          {/* {!(this.props.repos && this.props.repositories) ? ( */}
+      <ErrorBoundary>
+        <div className="App">
+          <header className="App-header">
+            <h1 className="App-title">Github Profile Search</h1>
+          </header>
+          <Form getProfile={this.getProfile} />
           <Repositories repos={this.state.repos} />
-          {/* ) : null} */}
-        </ErrorBoundary>
-      </div>
+        </div>
+      </ErrorBoundary>
     );
   }
 }

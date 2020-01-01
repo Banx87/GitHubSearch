@@ -14,7 +14,7 @@ const Form = props => (
       placeholder="Type github profile here"
     />
     <span>
-      <button className="form__button"> Search </button>
+      <button className="form__button">Search</button>
     </span>
   </form>
 );

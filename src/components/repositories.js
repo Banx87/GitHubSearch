@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const Repositories = props => (
   <div className="repoPreList">
-    {/* <div>{console.log("REPOSITORIES PROPS: " + props.repos)}</div> */}
     <h2>List of repositories</h2>
     <div className="row">
       {props.repos.length > 0 &&
