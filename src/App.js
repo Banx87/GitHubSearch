@@ -19,7 +19,6 @@ class App extends Component {
       const api_call = await fetch(
         `https://cors-anywhere.herokuapp.com/https://api.github.com/users/${profileName}/repos`
       );
-
       const data = await api_call.json();
       this.setState({ repos: data });
     } else {
@@ -40,9 +39,6 @@ class App extends Component {
   };
 
   render() {
-    if (this.props === null) {
-      return <div>Loading...</div>;
-    }
     return (
       <ErrorBoundary>
         <div className="App">
@@ -50,7 +46,12 @@ class App extends Component {
             <h1 className="App-title">Github Profile Search</h1>
           </header>
           <Form getProfile={this.getProfile} />
-          <Repositories repos={this.state.repos} />
+          {console.log("abc " + this.state.repos.length)}
+          {this.state.repos.length === undefined ? (
+            <h1>No repositories or profile found</h1>
+          ) : (
+            <Repositories repos={this.state.repos} />
+          )}
         </div>
       </ErrorBoundary>
     );

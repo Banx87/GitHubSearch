@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Repositories = props => (
   <div className="repoPreList">
-    <h2>List of repositories</h2>
     <div className="row">
+      <h2>List of repositories</h2>
       {props.repos.length > 0 &&
         props.repos.map(repo => {
           return (
@@ -22,6 +22,7 @@ const Repositories = props => (
                   View Repository
                 </Link>
               </button>
+              {console.log(props)}
             </div>
           );
         })}

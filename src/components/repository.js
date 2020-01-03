@@ -1,6 +1,9 @@
 // Render the selected repository
 import React from "react";
 import { Link } from "react-router-dom";
+import Moment from "react-moment";
+import "moment-timezone";
+import { Spinner } from "./Spinner";
 
 class Repository extends React.Component {
   state = {
@@ -25,40 +28,53 @@ class Repository extends React.Component {
   render() {
     const repository = this.state.activeRepo;
     const commits = this.state.commits;
-    return (
-      <div className="Commit-Container">
-        {this.state.activeRepo.length !== 0 && (
-          <div className="active-repo">
-            <h1 className="repoTitle">Repository: {repository.name}</h1>
-            <button className="repoList__btn">
-              <Link to="/">Go Back</Link>
-            </button>
-            <div className="commits">
-              {commits.map((commit, index) => {
-                return (
-                  <div key={`${commit.sha}`} className="CommitList">
-                    <img
-                      src={repository.owner.avatar_url}
-                      alt="Author"
-                      className="Repo_img"
-                    />
-                    <h3 className="AuthorName">
-                      Author: {commit.commit.author.name}
-                    </h3>
-                    <span className="messageHeader">Commit Message</span>
-                    <p className="CommitMessage">{commit.commit.message}</p>
-                    <p className="date">Date: {commit.commit.author.date}</p>
-                  </div>
-                );
-              })}
-              <button className="repoList__btn">
-                <Link to="/">Go Back</Link>
-              </button>
-            </div>
+
+    // const dateToFormat = "DD.MM.YYYYT12:59+0200";
+
+    console.log(commits);
+    if (repository === undefined || repository.length === 0) {
+      return <Spinner />;
+    } else {
+      return (
+        <React.Fragment>
+          <div className="Commit-Container">
+            {this.state.activeRepo.length !== 0 && (
+              <div className="active-repo">
+                <h1 className="repoTitle">Repository: {repository.name}</h1>
+                <button className="repoList__btn">
+                  <Link to="/">Go Back</Link>
+                </button>
+                <div className="commits">
+                  {commits.map((commit, index) => {
+                    return (
+                      <div key={`${commit.sha}`} className="CommitList">
+                        <img
+                          src={repository.owner.avatar_url}
+                          alt="Author"
+                          className="Repo_img"
+                        />
+                        <h3 className="AuthorName">
+                          Author: {commit.commit.author.name}
+                        </h3>
+                        <span className="messageHeader">Commit Message</span>
+                        <p className="CommitMessage">{commit.commit.message}</p>
+                        <p className="date">
+                          <span>Date: </span>
+                          <Moment>{commit.commit.committer.date}</Moment>
+                        </p>
+                      </div>
+                    );
+                  })}
+                  <button className="repoList__btn">
+                    <Link to="/">Go Back</Link>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    );
+        </React.Fragment>
+      );
+    }
   }
 }
 
