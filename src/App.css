@@ -205,7 +205,7 @@ textarea {
   top: -42px;
 }
 
-.CommitList > .date {
+.CommitList>.date {
   position: relative;
   left: 80px;
   bottom: 20px;
@@ -266,6 +266,7 @@ textarea {
 /* For mobile phones: */
 
 @media only screen and (min-width: 600px) {
+
   /* For tablets: */
   body {
     display: flex;
@@ -277,7 +278,7 @@ textarea {
   }
 
   .repoList {
-    width: 90%;
+    width: 100%;
     display: block;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -285,6 +286,7 @@ textarea {
   }
 
   @media only screen and (min-width: 768px) {
+
     /* For desktop: */
     body {
       display: flex;
@@ -302,6 +304,7 @@ textarea {
   ##Screen = B/w 481px to 767px */
 
 @media (min-width: 481px) and (max-width: 767px) {
+
   /* CSS */
   .repoPreList {
     padding: 0;
@@ -319,9 +322,11 @@ textarea {
     bottom: 5px;
     right: 5px;
   }
+
   .CommitList .CommitMessage {
     width: 80%;
   }
+
   .form__button {
     position: relative;
     top: -2px;
@@ -341,7 +346,8 @@ textarea {
     min-width: 300px;
     padding: 0;
   }
-  .App-header > .App-title {
+
+  .App-header>.App-title {
     font-size: 2em;
     position: relative;
     bottom: 10px;
